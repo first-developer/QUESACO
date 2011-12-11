@@ -1,5 +1,8 @@
 package parser;
 
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
@@ -9,12 +12,11 @@ public class MyParser {
 
 	// Attributes
 	// ------------------------------------------------------
-	private String uri = "";
+	private static String uri = "./arbres.xml";
 	
 	// Constructor
 	// ------------------------------------------------------
-	public MyParser( String uri) {
-		this.uri = uri;
+	public MyParser() {
 	}
 	
 	// Main 
@@ -22,7 +24,15 @@ public class MyParser {
 	public static void main(String[] args) throws Exception {
 		Msg.puts("Analyse du fichier 'Cpoints.xml' ");
 
-		String uri = "/home/fd/.jdownloader/jd/captcha/methods/dckld/CPoints.xml";
+		JFileChooser chooser = new JFileChooser();
+	    
+	    int retVal = chooser.showOpenDialog(chooser);
+	    if(retVal == JFileChooser.APPROVE_OPTION) {
+	    	uri = chooser.getSelectedFile().getAbsolutePath();
+	    	System.out.println("You chose to open this file: " +
+	            chooser.getSelectedFile().getName());
+	    }
+		
 		
 		// Configure tand set the parser
 		SAXParserFactory factory = SAXParserFactory.newInstance();
