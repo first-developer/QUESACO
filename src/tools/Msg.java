@@ -6,7 +6,7 @@ public class Msg {
 	}
 	
 	public static void puts( String msg) {
-		System.out.println(msg + "\n");
+		System.out.println(msg);
 	}
 
 	public static void puts(char c) {

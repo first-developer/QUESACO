@@ -1,5 +1,9 @@
 package parser;
 
+import java.io.IOException;
+import java.net.ContentHandler;
+import java.net.URLConnection;
+
 import org.xml.sax.helpers.*;
 import org.xml.sax.*;
 import tools.*;
@@ -15,7 +19,7 @@ public class myXMLHandler extends DefaultHandler {
 					_inCaracteristic, 	// triffer the Caracteristique tag
 					_inInterval, 		// triffer the Interval tag
 					_inEnsemble;		// triffer the Ensemble tag
-	
+	boolean isElement = false;
 	Object data; 						// Glogal data
 	
 		
@@ -39,6 +43,8 @@ public class myXMLHandler extends DefaultHandler {
 	
 	// startElement
 	public void startElement( String uri, String localName, String qname, Attributes attributes ) {
+		
+		
 		// set tag's flag according to the 'qname'
 		_checkAndSetFlags(qname);
 		
@@ -49,7 +55,8 @@ public class myXMLHandler extends DefaultHandler {
 	}
 	
 	// endElement
-	public void endElement( String uri, String localName, String qname, Attributes attributes ) {
+	public void endElement( String uri, String localName, String qname ) {
+		Msg.puts("{/"+qname+"}");
 		// Set flag to false according to he tags closed
 		_checkAndSetFlags(qname);
 
@@ -59,7 +66,7 @@ public class myXMLHandler extends DefaultHandler {
 	public void characters( char[] ch, int start, int length) {
 		_setDataContent(ch, start, length);
 		if (!((String) data).isEmpty()) {
-			Msg.puts(" > content: " + data  );
+			Msg.puts(" -: " + data  );
 		}
 	}
 	
@@ -141,7 +148,7 @@ public class myXMLHandler extends DefaultHandler {
 		_inInterval 	 = (_isInterval(qname)) 	 ? true : false;
 		_inEnsemble 	 = (_isEnsemble(qname)) 	 ? true : false;
 	}
-	
+
 	/**
 	 * _checkAndinitData
 	 * @param qname
