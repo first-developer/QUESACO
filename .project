@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Projet_java</name>
+	<name>projet_quesaco</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>arbres.xml</name>
-			<type>1</type>
-			<location>/home/fd/arbres.xml</location>
-		</link>
-	</linkedResources>
 </projectDescription>
