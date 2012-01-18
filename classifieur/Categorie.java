@@ -6,6 +6,8 @@
 
 package classifieur;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 // Class: Categorie
@@ -133,7 +135,7 @@ public class Categorie {
 	}
 
 	// seClasseSous
-	public boolean seClasseSous(Observation o) {
+	public boolean seClasseSous(Observation o) throws BadDomainException {
 		boolean b = true;
 		for (Caracteristique ca : this.caracteristiques) {
 			b = b && o.verifObservation(ca);
@@ -165,5 +167,15 @@ public class Categorie {
 		}
 		
 		return res;
+	}
+
+	// Write in file with ".gv" specification
+	public void writeCat(FileWriter fw) throws IOException {
+		for ( Categorie fille : this.filles) {
+			fw.write("\t" + this.getNom() + "->" + fille.getNom() + "\n");
+			if ( fille.getFilles() != null) {
+				fille.writeCat(fw);
+			}
+		}
 	}
 }

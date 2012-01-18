@@ -9,6 +9,7 @@ package classifieur;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -30,11 +31,13 @@ public class Classifieur implements Serializable{
 	// ========================================================
 	private static final long serialVersionUID = 1L;
 	private Categorie mere;
+	private Observation observation;
 	
 	// Constructors
 	// ========================================================
 	public Classifieur () throws ParserConfigurationException, SAXException{
 		this.mere=new Categorie();
+		this.observation = new Observation();
 	}
 	
 	// Methods
@@ -49,6 +52,16 @@ public class Classifieur implements Serializable{
 	// setMere
 	public void setMere(Categorie c) {
 		this.mere = c;
+	}
+	
+	// getObs
+	public Observation getObs() {
+		return this.observation;
+	}
+	
+	// setObs
+	public void setObs(Observation o) {
+		this.observation = o;
 	}
 	
 	// getListIntituleTypo
@@ -70,9 +83,20 @@ public class Classifieur implements Serializable{
 	
 	// ajoute_si_se_classe_sous
 	private void ajoute_si_se_classe_sous(Categorie cat, ArrayList<Categorie> liste_categories, Observation o) {
-		if(cat.seClasseSous(o)) {
-			liste_categories.add(cat);
+		try {
+			if(cat.seClasseSous(o)) {
+				liste_categories.add(cat);
+			}
+		} catch (BadDomainException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+	}
+	
+	// addCategoryThroughMere
+	public void addCategoryThroughMere(Categorie c) {
+		Categorie mere = c.find_by_mere_name(c.getMere());
+		mere.addChild(c);
 	}
 	
 	// showCategorieTree
@@ -104,4 +128,50 @@ public class Classifieur implements Serializable{
 		this.setMere((Categorie)in.readObject());
 	}
 	
+	// show
+	public void show(String fileName, String format) throws IOException, IOException, InterruptedException
+	{
+		// generate the '.dot' file
+		String src = fileName + ".gv";
+	
+		FileWriter fw = new FileWriter(src, false);
+		fw.write("digraph G {\n");
+		
+		this.getMere().writeCat(fw);
+		fw.write("}");
+		fw.close();
+	
+		// puts the right image in a specific file
+		String file=fileName +format;
+		String cmd ="dot -Tpng -o " + file +  " "+src;
+		Runtime.getRuntime().exec(cmd).waitFor();
+	}
+	
+	public void showClassification(Observation o, String fileName,String format) throws IOException, InterruptedException
+	{
+		// classify categories by a given observation
+		ArrayList<Categorie> liste_categories_sous_o = this.classer(o); 
+		String src=fileName + ".gv";
+		FileWriter fw = new FileWriter(src, false);
+		fw.write("digraph G {\n \t" );
+		fw.write("node [color = green];");
+		
+		// write those categories in a file
+		for ( Categorie cat : liste_categories_sous_o) {
+			fw.write(cat.getNom() + " ");
+		}
+		fw.write(";\n");
+		fw.write("\tnode [color = black];\n");
+		
+		this.getMere().writeCat(fw);
+		fw.write("}");
+		fw.close();
+		
+		// build the fileName.format with the image
+		String file=fileName + format;
+	    String fst_cmd ="rm " + file;
+	    Runtime.getRuntime().exec(fst_cmd);
+		String snd_cmd ="dot -Tpng -o " + file +  " " + src;
+		Runtime.getRuntime().exec(snd_cmd).waitFor();
+	}
 }

@@ -6,7 +6,7 @@
 
 package classifieur;
 
-public class ObservationNumerique {
+public class ObservationNumerique extends ObservationItem{
 
 
 	private double value;
@@ -14,6 +14,11 @@ public class ObservationNumerique {
 
 	public ObservationNumerique(double d) {
 		this.setValue(d);
+	}
+	
+	public ObservationNumerique(String caractName, double d) {
+		this.setValue(d);
+		this.setCaractName(caractName);
 	}
 	
 	public boolean hasValueIn(Domaine d) throws BadDomainException {

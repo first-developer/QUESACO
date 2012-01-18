@@ -8,7 +8,7 @@ package classifieur;
 
 // Class:  ObservationString
 //========================================================
-public class ObservationString {
+public class ObservationString  extends ObservationItem{
 
 	// Attributes
 	//========================================================
@@ -18,6 +18,11 @@ public class ObservationString {
 	//========================================================
 	public ObservationString(String s) {
 		this.setValue(s);
+	}
+	
+	public ObservationString(String caractName, String d) {
+		this.setValue(d);
+		this.setCaractName(caractName);
 	}
 
 	// Methods

@@ -9,9 +9,22 @@ package applications;
 // Imports
 //========================================================
 import java.util.ArrayList;
+
 import javax.xml.parsers.ParserConfigurationException;
+
 import org.xml.sax.SAXException;
-import classifieur.*;
+
+import tools.Msg;
+import classifieur.Caracteristique;
+import classifieur.Categorie;
+import classifieur.Classifieur;
+import classifieur.Element;
+import classifieur.EnsembleDeChaines;
+import classifieur.IntervalleNumerique;
+import classifieur.Observation;
+import classifieur.ObservationItem;
+import classifieur.ObservationNumerique;
+import classifieur.ObservationString;
 
 
 // Class: Test
@@ -27,21 +40,21 @@ public class Test {
 		_arbre.setfilles( new ArrayList<Categorie>());
 		ArrayList<Caracteristique> _caracteristiques = new ArrayList<Caracteristique>();
 		Caracteristique _c = new Caracteristique("forme", new EnsembleDeChaines());
-		EnsembleDeChaines ens = (EnsembleDeChaines)_c.getDomaine();
-		ens.addElement(new Element("arrondi"));
-		ens.addElement(new Element("conique"));
-		ens.addElement(new Element("iregulier"));
+		EnsembleDeChaines EnsCh = (EnsembleDeChaines)_c.getDomaine();
+		EnsCh.addElement(new Element("arrondi"));
+		EnsCh.addElement(new Element("conique"));
+		EnsCh.addElement(new Element("iregulier"));
 		_caracteristiques.add(_c);
 		_c = new Caracteristique("taille du tronc", new IntervalleNumerique(0.2, 3.0));
 		_caracteristiques.add(_c);
 		_c = new Caracteristique("taille", new IntervalleNumerique(5.0, 50.0));
 		_caracteristiques.add(_c);
 		_c = new Caracteristique("ecorce", new EnsembleDeChaines());
-		ens = (EnsembleDeChaines)_c.getDomaine();
-		ens.addElement(new Element("ecailles"));
-		ens.addElement(new Element("fissuree"));
-		ens.addElement(new Element("lisse"));
-		ens.addElement(new Element("plaques"));
+		EnsCh = (EnsembleDeChaines)_c.getDomaine();
+		EnsCh.addElement(new Element("ecailles"));
+		EnsCh.addElement(new Element("fissuree"));
+		EnsCh.addElement(new Element("lisse"));
+		EnsCh.addElement(new Element("plaques"));
 		_caracteristiques.add(_c);
 		return _arbre;
 	};
@@ -52,18 +65,18 @@ public class Test {
 			_arbre.setfilles( new ArrayList<Categorie>());
 			ArrayList<Caracteristique> _caracteristiques = new ArrayList<Caracteristique>();
 			Caracteristique _c = new Caracteristique("forme", new EnsembleDeChaines());
-			EnsembleDeChaines ens = (EnsembleDeChaines)_c.getDomaine();
-			ens.addElement(new Element("conique"));
+			EnsembleDeChaines EnsCh = (EnsembleDeChaines)_c.getDomaine();
+			EnsCh.addElement(new Element("conique"));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("taille du tronc", new IntervalleNumerique(0.5, 2.0));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("taille", new IntervalleNumerique(5.0, 40.0));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("ecorce", new EnsembleDeChaines());
-			ens = (EnsembleDeChaines)_c.getDomaine();
-			ens.addElement(new Element("ecailles"));
-			ens.addElement(new Element("fissuree"));
-			ens.addElement(new Element("lisse"));
+			EnsCh = (EnsembleDeChaines)_c.getDomaine();
+			EnsCh.addElement(new Element("ecailles"));
+			EnsCh.addElement(new Element("fissuree"));
+			EnsCh.addElement(new Element("lisse"));
 			_caracteristiques.add(_c);
 			return _arbre;
 		};
@@ -74,21 +87,21 @@ public class Test {
 			_arbre.setfilles( new ArrayList<Categorie>());
 			ArrayList<Caracteristique> _caracteristiques = new ArrayList<Caracteristique>();
 			Caracteristique _c = new Caracteristique("forme", new EnsembleDeChaines());
-			EnsembleDeChaines ens = (EnsembleDeChaines)_c.getDomaine();
-			ens.addElement(new Element("conique"));
+			EnsembleDeChaines EnsCh = (EnsembleDeChaines)_c.getDomaine();
+			EnsCh.addElement(new Element("conique"));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("taille du tronc", new IntervalleNumerique(0.5, 1.5));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("taille", new IntervalleNumerique(20.0, 30.0));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("ecorce", new EnsembleDeChaines());
-			ens = (EnsembleDeChaines)_c.getDomaine();
-			ens.addElement(new Element("ecailles"));
+			EnsCh = (EnsembleDeChaines)_c.getDomaine();
+			EnsCh.addElement(new Element("ecailles"));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("aiguilles", new EnsembleDeChaines());
-			ens = (EnsembleDeChaines)_c.getDomaine();
-			ens.addElement(new Element("brosse"));
-			ens.addElement(new Element("peigne"));
+			EnsCh = (EnsembleDeChaines)_c.getDomaine();
+			EnsCh.addElement(new Element("brosse"));
+			EnsCh.addElement(new Element("peigne"));
 			_caracteristiques.add(_c);
 			return _arbre;
 		};
@@ -100,20 +113,20 @@ public class Test {
 			_arbre.setfilles( new ArrayList<Categorie>());
 			ArrayList<Caracteristique> _caracteristiques = new ArrayList<Caracteristique>();
 			Caracteristique _c = new Caracteristique("forme", new EnsembleDeChaines());
-			EnsembleDeChaines ens = (EnsembleDeChaines)_c.getDomaine();
-			ens.addElement(new Element("conique"));
+			EnsembleDeChaines EnsCh = (EnsembleDeChaines)_c.getDomaine();
+			EnsCh.addElement(new Element("conique"));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("taille du tronc", new IntervalleNumerique(0.5, 1.5));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("taille", new IntervalleNumerique(20.0, 40.0));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("ecorce", new EnsembleDeChaines());
-			ens = (EnsembleDeChaines)_c.getDomaine();
-			ens.addElement(new Element("lisse"));
+			EnsCh = (EnsembleDeChaines)_c.getDomaine();
+			EnsCh.addElement(new Element("lisse"));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("aiguilles", new EnsembleDeChaines());
-			ens = (EnsembleDeChaines)_c.getDomaine();
-			ens.addElement(new Element("bouquet"));
+			EnsCh = (EnsembleDeChaines)_c.getDomaine();
+			EnsCh.addElement(new Element("bouquet"));
 			_caracteristiques.add(_c);
 			return _arbre;
 		};
@@ -124,27 +137,27 @@ public class Test {
 			_arbre.setfilles( new ArrayList<Categorie>());
 			ArrayList<Caracteristique> _caracteristiques = new ArrayList<Caracteristique>();
 			Caracteristique _c = new Caracteristique("forme", new EnsembleDeChaines());
-			EnsembleDeChaines ens = (EnsembleDeChaines)_c.getDomaine();
-			ens.addElement(new Element("arrondi"));
-			ens.addElement(new Element("conique"));
-			ens.addElement(new Element("iregulier"));
+			EnsembleDeChaines EnsCh = (EnsembleDeChaines)_c.getDomaine();
+			EnsCh.addElement(new Element("arrondi"));
+			EnsCh.addElement(new Element("conique"));
+			EnsCh.addElement(new Element("iregulier"));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("taille du tronc", new IntervalleNumerique(0.5, 2.0));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("taille", new IntervalleNumerique(5.0, 50.0));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("ecorce", new EnsembleDeChaines());
-			ens = (EnsembleDeChaines)_c.getDomaine();
-			ens.addElement(new Element("ecailles"));
-			ens.addElement(new Element("fissuree"));
-			ens.addElement(new Element("lisse"));
-			ens.addElement(new Element("plaques"));
+			EnsCh = (EnsembleDeChaines)_c.getDomaine();
+			EnsCh.addElement(new Element("ecailles"));
+			EnsCh.addElement(new Element("fissuree"));
+			EnsCh.addElement(new Element("lisse"));
+			EnsCh.addElement(new Element("plaques"));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("aiguilles", new EnsembleDeChaines());
-			ens = (EnsembleDeChaines)_c.getDomaine();
-			ens.addElement(new Element("dentelee"));
-			ens.addElement(new Element("lobe"));
-			ens.addElement(new Element("ovale"));
+			EnsCh = (EnsembleDeChaines)_c.getDomaine();
+			EnsCh.addElement(new Element("dentelee"));
+			EnsCh.addElement(new Element("lobe"));
+			EnsCh.addElement(new Element("ovale"));
 			_caracteristiques.add(_c);
 			return _arbre;
 		};
@@ -155,20 +168,20 @@ public class Test {
 			_arbre.setfilles( new ArrayList<Categorie>());
 			ArrayList<Caracteristique> _caracteristiques = new ArrayList<Caracteristique>();
 			Caracteristique _c = new Caracteristique("forme", new EnsembleDeChaines());
-			EnsembleDeChaines ens = (EnsembleDeChaines)_c.getDomaine();
-			ens.addElement(new Element("conique"));
+			EnsembleDeChaines EnsCh = (EnsembleDeChaines)_c.getDomaine();
+			EnsCh.addElement(new Element("conique"));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("taille du tronc", new IntervalleNumerique(0.5, 1.0));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("taille", new IntervalleNumerique(5.0, 20.0));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("ecorce", new EnsembleDeChaines());
-			ens = (EnsembleDeChaines)_c.getDomaine();
-			ens.addElement(new Element("fissuree"));
+			EnsCh = (EnsembleDeChaines)_c.getDomaine();
+			EnsCh.addElement(new Element("fissuree"));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("aiguilles", new EnsembleDeChaines());
-			ens = (EnsembleDeChaines)_c.getDomaine();
-			ens.addElement(new Element("dentelee"));
+			EnsCh = (EnsembleDeChaines)_c.getDomaine();
+			EnsCh.addElement(new Element("dentelee"));
 			_caracteristiques.add(_c);
 			return _arbre;
 		};
@@ -179,21 +192,21 @@ public class Test {
 			_arbre.setfilles( new ArrayList<Categorie>());
 			ArrayList<Caracteristique> _caracteristiques = new ArrayList<Caracteristique>();
 			Caracteristique _c = new Caracteristique("forme", new EnsembleDeChaines());
-			EnsembleDeChaines ens = (EnsembleDeChaines)_c.getDomaine();
-			ens.addElement(new Element("conique"));
+			EnsembleDeChaines EnsCh = (EnsembleDeChaines)_c.getDomaine();
+			EnsCh.addElement(new Element("conique"));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("taille du tronc", new IntervalleNumerique(0.5, 1.0));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("taille", new IntervalleNumerique(10.0, 25.0));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("ecorce", new EnsembleDeChaines());
-			ens = (EnsembleDeChaines)_c.getDomaine();
-			ens.addElement(new Element("lisse"));
+			EnsCh = (EnsembleDeChaines)_c.getDomaine();
+			EnsCh.addElement(new Element("lisse"));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("feuilles", new EnsembleDeChaines());
-			ens = (EnsembleDeChaines)_c.getDomaine();
-			ens.addElement(new Element("dentelee"));
-			ens.addElement(new Element("ovale"));
+			EnsCh = (EnsembleDeChaines)_c.getDomaine();
+			EnsCh.addElement(new Element("dentelee"));
+			EnsCh.addElement(new Element("ovale"));
 			_caracteristiques.add(_c);
 			return _arbre;
 		};
@@ -204,20 +217,20 @@ public class Test {
 			_arbre.setfilles( new ArrayList<Categorie>());
 			ArrayList<Caracteristique> _caracteristiques = new ArrayList<Caracteristique>();
 			Caracteristique _c = new Caracteristique("forme", new EnsembleDeChaines());
-			EnsembleDeChaines ens = (EnsembleDeChaines)_c.getDomaine();
-			ens.addElement(new Element("irregulier"));
+			EnsembleDeChaines EnsCh = (EnsembleDeChaines)_c.getDomaine();
+			EnsCh.addElement(new Element("irregulier"));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("taille du tronc", new IntervalleNumerique(1.0, 2.0));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("taille", new IntervalleNumerique(20.0, 50.0));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("ecorce", new EnsembleDeChaines());
-			ens = (EnsembleDeChaines)_c.getDomaine();
-			ens.addElement(new Element("fissuree"));
+			EnsCh = (EnsembleDeChaines)_c.getDomaine();
+			EnsCh.addElement(new Element("fissuree"));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("feuilles", new EnsembleDeChaines());
-			ens = (EnsembleDeChaines)_c.getDomaine();
-			ens.addElement(new Element("lobe"));
+			EnsCh = (EnsembleDeChaines)_c.getDomaine();
+			EnsCh.addElement(new Element("lobe"));
 			_caracteristiques.add(_c);
 			return _arbre;
 		};
@@ -228,23 +241,23 @@ public class Test {
 			_arbre.setfilles( new ArrayList<Categorie>());
 			ArrayList<Caracteristique> _caracteristiques = new ArrayList<Caracteristique>();
 			Caracteristique _c = new Caracteristique("forme", new EnsembleDeChaines());
-			EnsembleDeChaines ens = (EnsembleDeChaines)_c.getDomaine();
-			ens.addElement(new Element("arrondi"));
-			ens.addElement(new Element("conique"));
-			ens.addElement(new Element("iregulier"));
+			EnsembleDeChaines EnsCh = (EnsembleDeChaines)_c.getDomaine();
+			EnsCh.addElement(new Element("arrondi"));
+			EnsCh.addElement(new Element("conique"));
+			EnsCh.addElement(new Element("iregulier"));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("taille du tronc", new IntervalleNumerique(0.5, 1.5));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("taille", new IntervalleNumerique(20.0, 40.0));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("ecorce", new EnsembleDeChaines());
-			ens = (EnsembleDeChaines)_c.getDomaine();
-			ens.addElement(new Element("lisse"));
+			EnsCh = (EnsembleDeChaines)_c.getDomaine();
+			EnsCh.addElement(new Element("lisse"));
 			_caracteristiques.add(_c);
 			_c = new Caracteristique("feuilles", new EnsembleDeChaines());
-			ens = (EnsembleDeChaines)_c.getDomaine();
-			ens.addElement(new Element("dentelee"));
-			ens.addElement(new Element("lobe"));
+			EnsCh = (EnsembleDeChaines)_c.getDomaine();
+			EnsCh.addElement(new Element("dentelee"));
+			EnsCh.addElement(new Element("lobe"));
 			_caracteristiques.add(_c);
 			return _arbre;
 		};
@@ -253,9 +266,87 @@ public class Test {
 		
 		public static void main(String[] args) throws ParserConfigurationException, SAXException {
 			
-			// Classifieur classifieur =new Classifieur();
+			Classifieur classeur =new Classifieur();
+			Caracteristique _c ;
+			//on cree la categorie mere
+			Categorie mere = new Categorie();
+			classeur.getMere().setNom("arbre");
+			classeur.setMere(mere);
+			IntervalleNumerique intNum=new IntervalleNumerique();
+			EnsembleDeChaines EnsCh = new EnsembleDeChaines();
+			intNum.setInf(5.0);
+			intNum.setSup(50.0);	
+			_c = new Caracteristique("taille", intNum);
+			classeur.getMere().addCaracteristique(_c);
+			EnsCh.addElement( new Element("arrondi"));
+			EnsCh.addElement( new Element("conique"));
+			EnsCh.addElement( new Element("irregulier"));
+			
+			_c = new Caracteristique("forme", EnsCh);
+			classeur.getMere().addCaracteristique(_c);
+			
+			intNum=new IntervalleNumerique();
+			intNum.setInf(0.2);
+			intNum.setSup(3.0);
+			
+			_c = new Caracteristique("taille du tronc", intNum);
+			classeur.getMere().addCaracteristique(_c);
+			
+			EnsCh=new EnsembleDeChaines();
+			EnsCh.addElement( new Element("ecailles"));
+			EnsCh.addElement( new Element("fissuree"));
+			EnsCh.addElement( new Element("lisse"));
+			EnsCh.addElement( new Element("plaques"));
+			_c = new Caracteristique("ecorce", EnsCh);
+			classeur.getMere().addCaracteristique(_c);
+			
+
+			Categorie conifere=conifere();
+			Categorie feuillu=feuillu();
+			Categorie epicea=epicea();
+			Categorie aulne=aulne();
 			
 			
+			classeur.getMere().addChild(conifere);
+			classeur.addCategoryThroughMere(feuillu);
+			classeur.addCategoryThroughMere(epicea);
+			classeur.addCategoryThroughMere(aulne);
+
+
+			// Creation d'une observation obs ( ex: obs doit se placer sous les categories arbre, conifere et feuillu )
+			Observation obs=new Observation();
+			ObservationItem item; 
+			item = new ObservationNumerique("taille", 15.0);
+			obs.addObservationItem(item);
+			item = new ObservationString("forme", "conique");
+			obs.addObservationItem(item);
+			item = new ObservationNumerique("taille du tronc", 0.75);
+			obs.addObservationItem(item);
+			item = new ObservationString("ecorce", "fissuree");
+			obs.addObservationItem(item);
+			item = new ObservationString("feuilles", "ovale");
+			obs.addObservationItem(item);
 			
+			// Creation d'une observation obs_1 ( ex: obs_1 qui ne se place sous aucune categorie)
+			Observation obs_1=new Observation();
+			item = new ObservationNumerique("taille", 40.0);
+			obs_1.addObservationItem(item);
+			item = new ObservationString("couleur", "bleu");
+			obs_1.addObservationItem(item);
+			
+			// Affichage l'arbre complet
+			classeur.showCategorieTree();
+
+			// Ajoute de la premiere observation 'obs'
+			classeur.setObs(obs);
+			obs.showObservationCategories();
+			
+			// Ajoute la deuxieme observation 'obs_1
+			classeur.setObs(obs_1);
+			obs_1.showObservationCategories();
+			
+			// REcuperation des intitules des caracteristiques et affichage
+			ArrayList<String> intitules = classeur.getMere().getIntitule();
+			Msg.putsAll(intitules);
 		}
 }

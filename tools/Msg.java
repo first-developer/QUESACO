@@ -1,5 +1,8 @@
 package tools;
 
+import java.util.ArrayList;
+
+
 public class Msg {
 
 	public Msg() {
@@ -15,6 +18,12 @@ public class Msg {
 
 	public static void putsLine() {
 		System.out.println();
+	}
+	
+	public static void putsAll(ArrayList<String> msgs) {
+		for ( String msg : msgs) {
+			puts(msg);
+		}
 	}
 
 }

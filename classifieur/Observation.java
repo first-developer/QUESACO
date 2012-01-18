@@ -10,6 +10,12 @@ package classifieur;
 // ========================================================
 import java.util.ArrayList;
 
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
+import tools.Msg;
+
 public class Observation {
 
 	// Attributes
@@ -23,6 +29,11 @@ public class Observation {
 		this.items.add(o);
 	}
 	
+	public Observation() {
+		this.items = new ArrayList<ObservationItem>();
+	}
+
+
 	// Methods
 	// ========================================================
 	// hasCharact
@@ -48,7 +59,7 @@ public class Observation {
 	}
 	
 	// veriObservationValue
-	public boolean verifObservationValue(Caracteristique ca){
+	public boolean verifObservationValue(Caracteristique ca) throws BadDomainException{
 		// on verifie maintenant si les valeurs correspondent
 		// bi : booleen intitule
 		boolean bi = true;
@@ -60,5 +71,30 @@ public class Observation {
 			}
 		}
 		return bi;
+	}
+	
+	// addObservationItem
+	public void addObservationItem(ObservationItem o) {
+		this.items.add(o);
+	}
+	
+	// setItems
+	public void setItems(ArrayList<ObservationItem> o) {
+		this.items = o;
+	}
+	
+	// showObservationCategories
+	public void showObservationCategories() {
+		Classifieur classeur = null;
+		try {
+			classeur = new Classifieur();
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (SAXException e) {
+			e.printStackTrace();
+		}
+		for ( Categorie cat : classeur.classer(this)) {
+			Msg.puts(cat.getNom());
+		}
 	}
 }
