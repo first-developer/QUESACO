@@ -43,4 +43,14 @@ public class Classifieur {
 		Msg.puts(mere.toString());
 	}
 	
+	// testEngloge
+	public static void testEngloge(Categorie mere, Categorie fille) {
+		if ( mere.englobe(fille)) {
+			Msg.puts("La categorie ["+ mere.getNom() + "] englobe la categorie [" + fille.getNom() +"]" );
+		}
+		else {
+			Msg.puts("La categorie ["+ mere.getNom() + "] n'englobe pas la categorie [" + fille.getNom() +"]" );
+		}
+	}
+	
 }

@@ -62,6 +62,10 @@ public class Categorie {
 	public void setNom(String name) {
 		this.nom = name;
 	}
+	// getNom
+	public String getNom() {
+		return this.nom;
+	}
 	
 	// others methods 
 	// --------------
