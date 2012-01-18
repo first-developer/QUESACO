@@ -8,18 +8,28 @@ package classifieur;
 
 import java.util.ArrayList;
 
+//Class: EnsembleDeChaines 
+//========================================================
 public class EnsembleDeChaines extends Domaine {
 
+	// Attributes
+	// ========================================================
 	ArrayList<Element> el;
 
+	// Constructor
+	// ========================================================
 	public EnsembleDeChaines() {
 		el = new ArrayList<Element>();
 	}
 	
+	// Methods
+	// ========================================================
+	// addElement
 	public void addElement(Element e){
 		el.add(e);
 	}
 	
+	// contains
 	public boolean contains(String s){
 		boolean b = true;
 		for (Element e : el)
@@ -29,7 +39,8 @@ public class EnsembleDeChaines extends Domaine {
 		return b;
 	}
 	
-	public boolean Inclus (Domaine d) throws BadDomainException {
+	// inclus
+	public boolean inclus (Domaine d) throws BadDomainException {
 		// test si je suis inclus dans d
 		boolean b;
 		if(d instanceof EnsembleDeChaines)
@@ -47,6 +58,7 @@ public class EnsembleDeChaines extends Domaine {
 		}
 	}
 	
+	// toString
 	public String toString(){
 		String result;
 		result = "Ensemble : {";

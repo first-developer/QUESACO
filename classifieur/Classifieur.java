@@ -70,8 +70,7 @@ public class Classifieur implements Serializable{
 	
 	// ajoute_si_se_classe_sous
 	private void ajoute_si_se_classe_sous(Categorie cat, ArrayList<Categorie> liste_categories, Observation o) {
-		if(cat.seClasseSous(o))
-		{
+		if(cat.seClasseSous(o)) {
 			liste_categories.add(cat);
 		}
 	}
@@ -91,24 +90,18 @@ public class Classifieur implements Serializable{
 		}
 	}
 	
-	
 	// Save
-	public void save (String fileName) throws FileNotFoundException, IOException 
-	{
+	public void save (String fileName) throws FileNotFoundException, IOException {
 		ObjectOutputStream out = new ObjectOutputStream( new FileOutputStream (fileName) );
 		out.writeObject(this.getMere());
 		out.close();
 	}
 	
 	// Load
-	public void load(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException
-	{
+	public void load(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException {
 		Msg.puts("Chargement de la typologie  ... ");
-
 		ObjectInputStream in = new ObjectInputStream( new FileInputStream(fileName));
 		this.setMere((Categorie)in.readObject());
-		
-		
 	}
 	
 }

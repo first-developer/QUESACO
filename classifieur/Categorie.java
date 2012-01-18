@@ -145,7 +145,6 @@ public class Categorie {
 		}
 		return b;
 	}
-
 	
 	// addCaracteristique
 	public void addCaracteristique(Caracteristique caract) {
@@ -167,10 +166,4 @@ public class Categorie {
 		
 		return res;
 	}
-
-	
-
-	
-
-	
 }

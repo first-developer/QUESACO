@@ -1,12 +1,22 @@
+//  ===================================
+//  PROJET QUESACO
+//  @autors :   Laura BENDHAIBA
+//              Lionel LONKAP TSAMBA
+//  ===================================
+
 package classifieur;
 
-
+//Class: IntervalleNumerique 
+//========================================================
 public class IntervalleNumerique extends Domaine {
-
+	
+	// Attributes
+	// ========================================================
 	private double inf;
 	private double sup;
 	
-
+	// Constructor
+	// ========================================================
 	public IntervalleNumerique() {
 		this.inf=0.0;
 		this.sup=0.0;
@@ -17,27 +27,37 @@ public class IntervalleNumerique extends Domaine {
 		this.sup=b;
 	}
 	
+	// Methods
+	// ========================================================
+	
+	// getter and setter 
+	// setInf
 	public void setInf(Double i) {
 		this.inf = i;
 	}
 	
-	public void setSup(Double i) {
-		this.sup = i;
-	}
-	
+	// getInf
 	public Double getInf() {
 		return this.inf;
 	}
 	
+	// setSup
+	public void setSup(Double i) {
+		this.sup = i;
+	}
+	
+	// getSup
 	public Double getSup() {
 		return this.sup;
 	}
 	
+	// contains 
 	public boolean contains(double d){
 		return (d>=this.inf) && (d<=this.sup);
 	}
 	
-	public boolean Inclus (Domaine d) throws BadDomainException {
+	// inclus
+	public boolean inclus (Domaine d) throws BadDomainException {
 		// test si je suis inclus dans "d"
 		if(d instanceof IntervalleNumerique)
 		{
@@ -49,6 +69,7 @@ public class IntervalleNumerique extends Domaine {
 		}
 	}
 	
+	// toString
 	public String toString(){
 		String result;
 		result="Intervalle : ["+this.inf+", "+this.sup+"]\n";

@@ -24,10 +24,8 @@ import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-/**
- *
- * @author carre
- */
+//Class: Ihm
+//========================================================
 public class Ihm extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -37,7 +35,7 @@ public class Ihm extends JFrame {
     static final int LARG = 800;
     static final String FORMAT = ".png"; // format (.png, .jpg, .tiff, ...)
 
-    // L'application interfacee:
+    // L'application interface:
     // Classifieur classeur = ...
     // "en dur" pour le test:
     String[] caracteristiques = {"forme", "taille", "feuilles"};
@@ -49,7 +47,7 @@ public class Ihm extends JFrame {
     // Variables d'etats de l'IHM
     // observation en cours de saisie:
     // Observation obs = ...
-    // caracteristique selectionnee:
+    // caracteristique selectionnee
     String caracteristique;
     String valeurCaracteristique;
 

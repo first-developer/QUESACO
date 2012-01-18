@@ -7,13 +7,12 @@
 package classifieur;
 
 public abstract class Domaine {
-	/**
-	 * m�thodes
-	 */
+
+	// Methods
+	// ========================================================
 	public Domaine() {
-		
 	}
 	
-	abstract public boolean Inclus (Domaine d) throws BadDomainException;
+	abstract public boolean inclus (Domaine d) throws BadDomainException;
 
 }
