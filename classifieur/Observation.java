@@ -1,14 +1,16 @@
 package classifieur;
 
-import java.util.TreeSet;
+
+
+import java.util.ArrayList;
 
 public class Observation {
 
-	TreeSet<ObservationItem> items;
+	ArrayList<ObservationItem> items;
 	
 
 	public Observation(ObservationItem o) {
-		this.items = new TreeSet<ObservationItem>();
+		this.items = new ArrayList<ObservationItem>();
 		this.items.add(o);
 	}
 	

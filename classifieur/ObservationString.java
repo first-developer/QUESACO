@@ -1,3 +1,9 @@
+//  ===================================
+//  PROJET QUESACO
+//  @autors :   Laura BENDHAIBA
+//              Lionel LONKAP TSAMBA
+//  ===================================
+
 package classifieur;
 
 public class ObservationString {

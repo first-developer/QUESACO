@@ -1,10 +1,28 @@
+//  ===================================
+//  PROJET QUESACO
+//  @autors :   Laura BENDHAIBA
+//              Lionel LONKAP TSAMBA
+//  ===================================
 
 package ihm;
 
-import java.io.*;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Graphics;
+import java.awt.ScrollPane;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -12,7 +30,8 @@ import javax.swing.*;
  */
 public class Ihm extends JFrame {
 
-    static final int HTEXT = 10; // dimensions des zones de textes
+	private static final long serialVersionUID = 1L;
+	static final int HTEXT = 10; // dimensions des zones de textes
     static final int WTEXT = 30;
     static final int HAUT = 600; // dimensions par defaut de de la frame
     static final int LARG = 800;

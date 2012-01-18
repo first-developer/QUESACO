@@ -1,3 +1,9 @@
+//  ===================================
+//  PROJET QUESACO
+//  @autors :   Laura BENDHAIBA
+//              Lionel LONKAP TSAMBA
+//  ===================================
+
 package classifieur;
 
 public class Caracteristique {
@@ -7,9 +13,7 @@ public class Caracteristique {
 	private String intitule;
 	private Domaine dm;
 
-	/**
-	 * constructeur
-	 */
+
 	public Caracteristique() {
 		this.intitule = "";
 		this.dm= null;
@@ -24,9 +28,7 @@ public class Caracteristique {
 		this.intitule=s;		
 	}
 
-	/**
-	 * methodes
-	 */
+
 	public String toString(){
 		String result="- "+this.getIntitule()+" : ";
 		result=result+ dm.toString();
