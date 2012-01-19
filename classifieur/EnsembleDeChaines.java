@@ -6,11 +6,13 @@
 
 package classifieur;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 //Class: EnsembleDeChaines 
 //========================================================
-public class EnsembleDeChaines extends Domaine {
+public class EnsembleDeChaines extends Domaine 
+implements Serializable {
 
 	// Attributes
 	// ========================================================

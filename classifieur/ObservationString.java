@@ -6,9 +6,12 @@
 
 package classifieur;
 
+import java.io.Serializable;
+
 // Class:  ObservationString
 //========================================================
-public class ObservationString  extends ObservationItem{
+public class ObservationString  extends ObservationItem
+					implements Serializable {
 
 	// Attributes
 	//========================================================

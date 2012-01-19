@@ -8,6 +8,7 @@ package classifieur;
 
 // Import
 // ========================================================
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -16,7 +17,8 @@ import org.xml.sax.SAXException;
 
 import tools.Msg;
 
-public class Observation {
+public class Observation 
+implements Serializable {
 
 	// Attributes
 	// ========================================================

@@ -112,7 +112,7 @@ public class myXMLHandler extends DefaultHandler {
 				_isTopCategory = false;
 			}
 			else {
-				Categorie f = rootCategory.find_by_mere_name(fille.getMere());
+				Categorie f = rootCategory.find_fille_by_name(fille.getMere());
 				// @log: Msg.puts(fille.getMere());
 				f.addChild(fille);
 			}
@@ -268,15 +268,17 @@ public class myXMLHandler extends DefaultHandler {
 	}
 
 
-	/**
-	 * _checkAndinitData
-	 * @param qname
-	 */
+	// _checkAndinitData
 	private void _checkAndinitData(String qname) {
 		if (_inCategorie) { fille = new Categorie(); }
 		if (_inCaracteristic) 	{ c = new Caracteristique();}
 		if (_inInterval) 	 	{ intNum = new IntervalleNumerique(); }
 		if (_inEnsemble) 	 	{ e = new EnsembleDeChaines();}
 		if (_inElement)			{ el = new Element();}
+	}
+	
+	// getRootCategory()
+	public Categorie getRootCategory() {
+		return this.rootCategory;
 	}
 }

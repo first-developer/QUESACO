@@ -66,7 +66,7 @@ public class Classifieur implements Serializable{
 	
 	// getListIntituleTypo
 	public ArrayList<String> getListIntituleTypo(){
-		return this.getMere().getIntitule();
+		return this.getMere().getIntituleName();
 	}
 	
 	// classer

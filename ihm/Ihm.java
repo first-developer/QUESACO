@@ -18,6 +18,7 @@ import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -50,9 +51,7 @@ public class Ihm extends JFrame {
     static final String FORMAT = ".png"; // format (.png, .jpg, .tiff, ...)
 
     // L'application interface:
-    // Classifieur classeur = ...
-    // "en dur" pour le test:
-    String[] caracteristiques = {"forme", "taille", "feuilles"};
+    String[] caracteristiques ;
     // Nom du fichier parametre de l'application:
     //   + ".bin": serialise
     //   + ".png" : image correspondante
@@ -94,6 +93,18 @@ public class Ihm extends JFrame {
 
         // Caracteristiques: liste de selection
         // "en dur" pour le test
+        
+        // remplir le tableau de caractéristiques
+        int length = classeur.getListIntituleTypo().size();
+        Msg.puts(Integer.toString(length));
+        Iterator<String> it  = classeur.getListIntituleTypo().iterator();
+        caracteristiques = new String[length];
+        int i=0;
+        while(it.hasNext()) {
+        	this.caracteristiques[i] = it.next();
+        	Msg.puts(caracteristiques[i]);
+        	i++;
+        }
         selectCaracteristique = new JComboBox(this.caracteristiques);
         // selection intiale par defaut
         selectCaracteristique.setSelectedIndex(0);

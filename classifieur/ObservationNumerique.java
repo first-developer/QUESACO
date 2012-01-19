@@ -6,7 +6,10 @@
 
 package classifieur;
 
-public class ObservationNumerique extends ObservationItem{
+import java.io.Serializable;
+
+public class ObservationNumerique extends ObservationItem 
+								  implements Serializable {
 
 
 	private double value;

@@ -8,14 +8,17 @@ package classifieur;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import tools.Msg;
 
 // Class: Categorie
 //========================================================
-public class Categorie {
+public class Categorie implements Serializable {
 
+
+	private static final long serialVersionUID = 1L;
 	// Attributes
 	// ========================================================
 	private String nom;
@@ -109,13 +112,13 @@ public class Categorie {
 	}
 
 	// getIntitule
-	public ArrayList<String> getIntitule() {
+	public ArrayList<String> getIntituleName() {
 		ArrayList<String> intitule = new ArrayList<String>();
 		for (Caracteristique ca : this.caracteristiques) {
-			intitule.add(ca.toString());
+			intitule.add(ca.getIntitule());
 		}
 		for (Categorie cat : getFilles()) {
-			intitule.addAll(cat.getIntitule());
+			intitule.addAll(cat.getIntituleName());
 		}
 		return intitule;
 	}

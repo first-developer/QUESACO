@@ -6,9 +6,12 @@
 
 package classifieur;
 
+import java.io.Serializable;
+
 //Class: IntervalleNumerique 
 //========================================================
-public class IntervalleNumerique extends Domaine {
+public class IntervalleNumerique extends Domaine
+implements Serializable {
 	
 	// Attributes
 	// ========================================================

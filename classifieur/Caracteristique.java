@@ -6,9 +6,12 @@
 
 package classifieur;
 
+import java.io.Serializable;
+
 // Class: Caracteristique
 // ========================================================
-public class Caracteristique {
+public class Caracteristique 
+implements Serializable {
 
 	// Attributes
 	// ========================================================
