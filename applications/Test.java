@@ -56,6 +56,7 @@ public class Test {
 		EnsCh.addElement(new Element("lisse"));
 		EnsCh.addElement(new Element("plaques"));
 		_caracteristiques.add(_c);
+		_arbre.setCaracteristiques(_caracteristiques); // on ajoute le tout à la categorie
 		return _arbre;
 	};
 	
@@ -78,6 +79,7 @@ public class Test {
 			EnsCh.addElement(new Element("fissuree"));
 			EnsCh.addElement(new Element("lisse"));
 			_caracteristiques.add(_c);
+			_arbre.setCaracteristiques(_caracteristiques); // on ajoute le tout à la categorie
 			return _arbre;
 		};
 
@@ -103,6 +105,7 @@ public class Test {
 			EnsCh.addElement(new Element("brosse"));
 			EnsCh.addElement(new Element("peigne"));
 			_caracteristiques.add(_c);
+			_arbre.setCaracteristiques(_caracteristiques); // on ajoute le tout à la categorie
 			return _arbre;
 		};
 	
@@ -128,6 +131,7 @@ public class Test {
 			EnsCh = (EnsembleDeChaines)_c.getDomaine();
 			EnsCh.addElement(new Element("bouquet"));
 			_caracteristiques.add(_c);
+			_arbre.setCaracteristiques(_caracteristiques); // on ajoute le tout à la categorie
 			return _arbre;
 		};
 	
@@ -159,6 +163,7 @@ public class Test {
 			EnsCh.addElement(new Element("lobe"));
 			EnsCh.addElement(new Element("ovale"));
 			_caracteristiques.add(_c);
+			_arbre.setCaracteristiques(_caracteristiques); // on ajoute le tout à la categorie
 			return _arbre;
 		};
 		
@@ -183,6 +188,7 @@ public class Test {
 			EnsCh = (EnsembleDeChaines)_c.getDomaine();
 			EnsCh.addElement(new Element("dentelee"));
 			_caracteristiques.add(_c);
+			_arbre.setCaracteristiques(_caracteristiques); // on ajoute le tout à la categorie
 			return _arbre;
 		};
 		
@@ -208,6 +214,7 @@ public class Test {
 			EnsCh.addElement(new Element("dentelee"));
 			EnsCh.addElement(new Element("ovale"));
 			_caracteristiques.add(_c);
+			_arbre.setCaracteristiques(_caracteristiques); // on ajoute le tout à la categorie
 			return _arbre;
 		};
 		
@@ -232,6 +239,7 @@ public class Test {
 			EnsCh = (EnsembleDeChaines)_c.getDomaine();
 			EnsCh.addElement(new Element("lobe"));
 			_caracteristiques.add(_c);
+			_arbre.setCaracteristiques(_caracteristiques); // on ajoute le tout à la categorie
 			return _arbre;
 		};
 		
@@ -259,6 +267,7 @@ public class Test {
 			EnsCh.addElement(new Element("dentelee"));
 			EnsCh.addElement(new Element("lobe"));
 			_caracteristiques.add(_c);
+			_arbre.setCaracteristiques(_caracteristiques); // on ajoute le tout à la categorie
 			return _arbre;
 		};
 		
@@ -266,11 +275,11 @@ public class Test {
 		
 		public static void main(String[] args) throws ParserConfigurationException, SAXException {
 			
-			Classifieur classeur =new Classifieur();
+			Classifieur classeur = new Classifieur();
 			Caracteristique _c ;
 			//on cree la categorie mere
 			Categorie mere = new Categorie();
-			classeur.getMere().setNom("arbre");
+			mere.setNom("arbre");
 			classeur.setMere(mere);
 			IntervalleNumerique intNum=new IntervalleNumerique();
 			EnsembleDeChaines EnsCh = new EnsembleDeChaines();
@@ -306,7 +315,6 @@ public class Test {
 			Categorie epicea=epicea();
 			Categorie aulne=aulne();
 			
-			
 			classeur.getMere().addChild(conifere);
 			classeur.addCategoryThroughMere(feuillu);
 			classeur.addCategoryThroughMere(epicea);
@@ -339,14 +347,17 @@ public class Test {
 
 			// Ajoute de la premiere observation 'obs'
 			classeur.setObs(obs);
-			obs.showObservationCategories();
+			obs.showObservationCategories(classeur);
 			
 			// Ajoute la deuxieme observation 'obs_1
 			classeur.setObs(obs_1);
-			obs_1.showObservationCategories();
+			obs_1.showObservationCategories(classeur);
 			
 			// REcuperation des intitules des caracteristiques et affichage
 			ArrayList<String> intitules = classeur.getMere().getIntitule();
+			Msg.puts(" =====================================================");
+			Msg.puts("	INTITULES DES CARACTERISTIQUES");
+			Msg.puts(" =====================================================\n");
 			Msg.putsAll(intitules);
 		}
 }

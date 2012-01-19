@@ -72,7 +72,7 @@ public class IntervalleNumerique extends Domaine {
 	// toString
 	public String toString(){
 		String result;
-		result="Intervalle : ["+this.inf+", "+this.sup+"]\n";
+		result="Intervalle : ["+this.inf+", "+this.sup+"]";
 		return result;
 	}
 }

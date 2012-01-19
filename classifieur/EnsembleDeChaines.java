@@ -67,7 +67,7 @@ public class EnsembleDeChaines extends Domaine {
 			result=result+e.toString()+", ";
 		}
 		result = result.substring(0, (result.length()-2));
-		result=result+"}\n";
+		result=result+"}";
 		return result;
 	}
 

@@ -95,13 +95,35 @@ public class Classifieur implements Serializable{
 	
 	// addCategoryThroughMere
 	public void addCategoryThroughMere(Categorie c) {
-		Categorie mere = c.find_by_mere_name(c.getMere());
-		mere.addChild(c);
+		// @log: Msg.puts(" ma mere: " + c.getMere() + " --> moi : " + c.getNom());
+		Categorie Rmere = find_category_by_name(this.getMere(), c.getMere());
+		// @log: Msg.puts(" ma mere trouvée: " + Rmere.getNom() );
+		Rmere.addChild(c);
 	}
+	
+	// find_category_by_name
+	public Categorie find_category_by_name(Categorie cat_mere, String name) {
+		Categorie potential_mere = null;
+		if (cat_mere.getNom().equals(name)) {  
+			potential_mere = cat_mere;
+		}
+		else {
+			for ( Categorie f : cat_mere.getFilles()) {
+				// @log: Msg.puts(" FILLE : " + f.getNom() + "\n" );
+				potential_mere = f.find_fille_by_name(name);
+			}
+		}
+		return (potential_mere != null) ? potential_mere : cat_mere; 
+	}	
 	
 	// showCategorieTree
 	public void showCategorieTree(){
-		Msg.puts(this.getMere().toString());
+		if (!this.mere.equals(null)) {
+			Msg.puts(this.getMere().toString());
+		}
+		else {
+			Msg.puts("Aucune categorie mere");
+		}
 	}
 	
 	// testEngloge

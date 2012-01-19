@@ -10,6 +10,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import tools.Msg;
+
 // Class: Categorie
 //========================================================
 public class Categorie {
@@ -20,13 +22,14 @@ public class Categorie {
 	private String mere;
 	private ArrayList<Caracteristique> caracteristiques;
 	private ArrayList<Categorie> filles;
-
+	int level = 0;
 	
 	// Constructors
 	// ========================================================
 	public Categorie() {
 		this.caracteristiques = new ArrayList<Caracteristique>();
 		this.setfilles(new ArrayList<Categorie>());
+		this.level = 0; // pour aligner les categories à l'affichage
 	}
 
 	public Categorie(String nom, String mere, Caracteristique ca) {
@@ -35,6 +38,7 @@ public class Categorie {
 		this.caracteristiques = new ArrayList<Caracteristique>();
 		this.setfilles(new ArrayList<Categorie>());
 		this.caracteristiques.add(ca);
+		this.level = 0; // pour aligner les categories à l'affichage
 	}
 
 	// Methods
@@ -46,7 +50,7 @@ public class Categorie {
 	public String getMere() {
 		return mere;
 	}
-	// getCaracteristiques
+	// setMere
 	public void setMere(String mere) {
 		this.mere = mere;
 	}
@@ -54,6 +58,11 @@ public class Categorie {
 	// getCaracteristiques
 	public  ArrayList<Caracteristique> getCaracteristiques() {
 		return this.caracteristiques;
+	}
+	
+	// setCaracteristiques
+	public  void setCaracteristiques( ArrayList<Caracteristique> c) {
+		this.caracteristiques = c;
 	}
 	
 	// getFilles
@@ -78,15 +87,16 @@ public class Categorie {
 	// others methods 
 	// --------------
 	
-	// find_by_mere_name
-	public Categorie find_by_mere_name(String name) {
+	// find_fille_by_name
+	public Categorie find_fille_by_name(String name) {
 		for (Categorie f : this.filles) {
-			if (f.mere.equalsIgnoreCase(name)) {
+			if (f.getNom().equalsIgnoreCase(name)) {
 				return f;
 			}
 		}
 		return this;
 	}
+
 	
 	// addChild
 	public void addChild(Categorie c) {
@@ -156,14 +166,17 @@ public class Categorie {
 	// toString
 	public String toString() {
 		String res = "CATEGORIE : " + this.nom + "\n";
-		
+		int i = this.level;
 		for (Caracteristique ca : this.caracteristiques) {
-			res = res + ca.toString();
+			if (i !=0) {
+				res += Msg.puts_i_times("\t", i);
+			}
+			res += ca.toString() + "\n";
 		}
-		
 		res += "\n\t";
-		for (Categorie filles : this.getFilles()) {
-			res = res + filles.toString();
+		for (Categorie fille : this.getFilles()) {
+			fille.increaseLevel();
+			res = res + fille.toString();
 		}
 		
 		return res;
@@ -177,5 +190,9 @@ public class Categorie {
 				fille.writeCat(fw);
 			}
 		}
+	}
+	
+	private void increaseLevel() {
+		this.level = this.level +1;
 	}
 }

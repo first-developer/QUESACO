@@ -84,15 +84,7 @@ public class Observation {
 	}
 	
 	// showObservationCategories
-	public void showObservationCategories() {
-		Classifieur classeur = null;
-		try {
-			classeur = new Classifieur();
-		} catch (ParserConfigurationException e) {
-			e.printStackTrace();
-		} catch (SAXException e) {
-			e.printStackTrace();
-		}
+	public void showObservationCategories(Classifieur classeur) throws ParserConfigurationException, SAXException {
 		for ( Categorie cat : classeur.classer(this)) {
 			Msg.puts(cat.getNom());
 		}

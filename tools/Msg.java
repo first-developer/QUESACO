@@ -25,5 +25,13 @@ public class Msg {
 			puts(msg);
 		}
 	}
+	
+	public static String puts_i_times(String msg, int i) {
+		String res = "";
+		for ( int k=1; k<=i; k++) {
+			res += '\t'; 
+		}
+		return res;
+	}
 
 }

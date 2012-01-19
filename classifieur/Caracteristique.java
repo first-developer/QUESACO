@@ -61,8 +61,10 @@ public class Caracteristique {
 	// toString
 	public String toString(){
 		String result="- "+this.getIntitule()+" : ";
-		result=result+ dm.toString();
-		return result;
+		if (dm != null) {
+			result=result+ dm.toString();
+		}
+		return result ;
 	}
 
 }

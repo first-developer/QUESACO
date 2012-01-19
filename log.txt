@@ -1,0 +1,90 @@
+*********************************
+CATEGORIE : feuillu
+- forme : Ensemble : {arrondi, conique, iregulier}
+- taille du tronc : Intervalle : [0.5, 2.0]
+- taille : Intervalle : [5.0, 50.0]
+- ecorce : Ensemble : {ecailles, fissuree, lisse, plaques}
+- aiguilles : Ensemble : {dentelee, lobe, ovale}
+
+	
+*********************************
+ ma mere: conifere --> moi : feuillu
+*********************************
+CATEGORIE : feuillu
+- forme : Ensemble : {arrondi, conique, iregulier}
+- taille du tronc : Intervalle : [0.5, 2.0]
+- taille : Intervalle : [5.0, 50.0]
+- ecorce : Ensemble : {ecailles, fissuree, lisse, plaques}
+- aiguilles : Ensemble : {dentelee, lobe, ovale}
+
+	
+*********************************
+ ma mere: conifere --> moi : feuillu
+ ma mere trouvée: conifere
+ ma mere: conifere --> moi : epicea
+ ma mere trouvée: conifere
+ ma mere: feuillu --> moi : aulne
+ ma mere trouvée: arbre
+CATEGORIE : arbre
+- taille : Intervalle : [5.0, 50.0]
+- forme : Ensemble : {arrondi, conique, irregulier}
+- taille du tronc : Intervalle : [0.2, 3.0]
+- ecorce : Ensemble : {ecailles, fissuree, lisse, plaques}
+
+	CATEGORIE : conifere
+	- forme : Ensemble : {conique}
+	- taille du tronc : Intervalle : [0.5, 2.0]
+	- taille : Intervalle : [5.0, 40.0]
+	- ecorce : Ensemble : {ecailles, fissuree, lisse}
+
+	CATEGORIE : feuillu
+	- forme : Ensemble : {arrondi, conique, iregulier}
+	- taille du tronc : Intervalle : [0.5, 2.0]
+	- taille : Intervalle : [5.0, 50.0]
+	- ecorce : Ensemble : {ecailles, fissuree, lisse, plaques}
+	- aiguilles : Ensemble : {dentelee, lobe, ovale}
+
+	CATEGORIE : epicea
+	- forme : Ensemble : {conique}
+	- taille du tronc : Intervalle : [0.5, 1.5]
+	- taille : Intervalle : [20.0, 30.0]
+	- ecorce : Ensemble : {ecailles}
+	- aiguilles : Ensemble : {brosse, peigne}
+
+	CATEGORIE : aulne
+	- forme : Ensemble : {conique}
+	- taille du tronc : Intervalle : [0.5, 1.0]
+	- taille : Intervalle : [10.0, 25.0]
+	- ecorce : Ensemble : {lisse}
+	- feuilles : Ensemble : {dentelee, ovale}
+
+	
+null
+null
+ =====================================================
+	INTITULES DES CARACTERISTIQUES
+ =====================================================
+
+- taille : Intervalle : [5.0, 50.0]
+- forme : Ensemble : {arrondi, conique, irregulier}
+- taille du tronc : Intervalle : [0.2, 3.0]
+- ecorce : Ensemble : {ecailles, fissuree, lisse, plaques}
+- forme : Ensemble : {conique}
+- taille du tronc : Intervalle : [0.5, 2.0]
+- taille : Intervalle : [5.0, 40.0]
+- ecorce : Ensemble : {ecailles, fissuree, lisse}
+- forme : Ensemble : {arrondi, conique, iregulier}
+- taille du tronc : Intervalle : [0.5, 2.0]
+- taille : Intervalle : [5.0, 50.0]
+- ecorce : Ensemble : {ecailles, fissuree, lisse, plaques}
+- aiguilles : Ensemble : {dentelee, lobe, ovale}
+- forme : Ensemble : {conique}
+- taille du tronc : Intervalle : [0.5, 1.5]
+- taille : Intervalle : [20.0, 30.0]
+- ecorce : Ensemble : {ecailles}
+- aiguilles : Ensemble : {brosse, peigne}
+- forme : Ensemble : {conique}
+- taille du tronc : Intervalle : [0.5, 1.0]
+- taille : Intervalle : [10.0, 25.0]
+- ecorce : Ensemble : {lisse}
+- feuilles : Ensemble : {dentelee, ovale}
