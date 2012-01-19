@@ -165,7 +165,7 @@ public class Categorie {
 	
 	// toString
 	public String toString() {
-		String res = "CATEGORIE : " + this.nom + "\n";
+		String res = "CATEGORIE : " + this.nom  + "\n";
 		int i = this.level;
 		for (Caracteristique ca : this.caracteristiques) {
 			if (i !=0) {
@@ -192,7 +192,11 @@ public class Categorie {
 		}
 	}
 	
-	private void increaseLevel() {
+	public void increaseLevel() {
 		this.level = this.level +1;
+	}
+	
+	public int getLevel() {
+		return this.level;
 	}
 }

@@ -280,6 +280,7 @@ public class Test {
 			//on cree la categorie mere
 			Categorie mere = new Categorie();
 			mere.setNom("arbre");
+			mere.setMere("TOP");
 			classeur.setMere(mere);
 			IntervalleNumerique intNum=new IntervalleNumerique();
 			EnsembleDeChaines EnsCh = new EnsembleDeChaines();
